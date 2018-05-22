@@ -1,0 +1,4 @@
+services:
+#    blox_ticket.example:
+#        class: Blox\TicketBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

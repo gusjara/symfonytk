@@ -1,3 +1,13 @@
+blox_ticket:
+    resource: "@BloxTicketBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+easy_admin_bundle:
+    resource: "@BloxTicketBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /admin
