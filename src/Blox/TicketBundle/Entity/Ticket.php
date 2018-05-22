@@ -54,7 +54,7 @@ class Ticket
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="tickets")
-     * @ORM\JoinColumn(name="_id_create", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="user_id_create", referencedColumnName="id", nullable=false)
      */
     private $userIdCreate;
 
