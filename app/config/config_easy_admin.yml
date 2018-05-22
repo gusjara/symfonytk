@@ -1,4 +1,25 @@
 easy_admin:
     design:
         brand_color: '#1ABC9C'
-    #entities:
+    entities:
+        Categoria:
+            class: Blox\TicketBundle\Entity\Categoria
+            #controller: Blog\BlogBundle\Controller\PostController
+        
+        Tipo:
+            class: Blox\TicketBundle\Entity\Tipo
+
+        Estado:
+            class: Blox\TicketBundle\Entity\Estado
+
+        Nivel:
+            class: Blox\TicketBundle\Entity\Nivel
+
+        User:
+            class: Blox\TicketBundle\Entity\User
+
+        Empresa:
+            class: Blox\TicketBundle\Entity\Empresa
+
+        Ticket:
+            class: Blox\TicketBundle\Entity\Ticket
