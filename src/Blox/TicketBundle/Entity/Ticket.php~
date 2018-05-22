@@ -342,3 +342,4 @@ class Ticket
         return $this->updateAt;
     }
 }
+

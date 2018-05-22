@@ -67,45 +67,5 @@ class Nivel
     {
         return $this->nivel;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add ticket
-     *
-     * @param \Blox\TicketBundle\Entity\Ticket $ticket
-     *
-     * @return Nivel
-     */
-    public function addTicket(\Blox\TicketBundle\Entity\Ticket $ticket)
-    {
-        $this->tickets[] = $ticket;
-
-        return $this;
-    }
-
-    /**
-     * Remove ticket
-     *
-     * @param \Blox\TicketBundle\Entity\Ticket $ticket
-     */
-    public function removeTicket(\Blox\TicketBundle\Entity\Ticket $ticket)
-    {
-        $this->tickets->removeElement($ticket);
-    }
-
-    /**
-     * Get tickets
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTickets()
-    {
-        return $this->tickets;
-    }
 }
+

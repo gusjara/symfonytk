@@ -5,12 +5,12 @@ namespace Blox\TicketBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Estado
+ * Empresa
  *
- * @ORM\Table(name="estado")
- * @ORM\Entity(repositoryClass="Blox\TicketBundle\Repository\EstadoRepository")
+ * @ORM\Table(name="empresa")
+ * @ORM\Entity(repositoryClass="Blox\TicketBundle\Repository\EmpresaRepository")
  */
-class Estado
+class Empresa
 {
     /**
      * @var int
@@ -24,9 +24,9 @@ class Estado
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=255, unique=true)
+     * @ORM\Column(name="empresa", type="string", length=255, unique=true)
      */
-    private $estado;
+    private $empresa;
 
 
     /**
@@ -40,26 +40,27 @@ class Estado
     }
 
     /**
-     * Set estado
+     * Set empresa
      *
-     * @param string $estado
+     * @param string $empresa
      *
-     * @return Estado
+     * @return Empresa
      */
-    public function setEstado($estado)
+    public function setEmpresa($empresa)
     {
-        $this->estado = $estado;
+        $this->empresa = $empresa;
 
         return $this;
     }
 
     /**
-     * Get estado
+     * Get empresa
      *
      * @return string
      */
-    public function getEstado()
+    public function getEmpresa()
     {
-        return $this->estado;
+        return $this->empresa;
     }
 }
+

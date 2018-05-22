@@ -63,4 +63,3 @@ class Empresa
         return $this->empresa;
     }
 }
-
