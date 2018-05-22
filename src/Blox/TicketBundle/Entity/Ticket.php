@@ -47,19 +47,19 @@ class Ticket
     private $estado;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Estado", inversedBy="tickets")
-     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Empresa", inversedBy="tickets")
+     * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id", nullable=false)
      */
     private $empresa;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="tickets")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id_create", referencedColumnName="id", nullable=false)
      */
     private $userIdCreate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="tickets")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id_close", referencedColumnName="id", nullable=true)
      */
     private $userIdClose;
