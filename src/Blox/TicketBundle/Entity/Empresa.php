@@ -28,6 +28,11 @@ class Empresa
      */
     private $empresa;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="empresa")
+     */
+    private $tickets;
+
 
     /**
      * Get id
@@ -63,3 +68,4 @@ class Empresa
         return $this->empresa;
     }
 }
+
