@@ -5,21 +5,70 @@ easy_admin:
         Categoria:
             class: Blox\TicketBundle\Entity\Categoria
             #controller: Blog\BlogBundle\Controller\PostController
-        
+            form:
+                fields:
+                    - { property: 'categoria', label: 'Categoria' }
+            list:
+                fields:
+                    - { property: 'Categoria' }
+                    - { property: 'Tickets' }
+
+                actions: 
+                        - { name: 'edit', label: 'Editar', title: 'Edit', icon: 'pencil' }
+                        - { name: 'delete', label: 'Eliminar', icon: 'trash'}
+                        - { name: 'new', label: 'Crear Categoria', icon: 'plus'}
+                        - { name: 'search', label: 'Buscar', icon: 'search'}
+                    
         Tipo:
             class: Blox\TicketBundle\Entity\Tipo
+
+            form:
+                fields:
+                    - { property: 'tipo', label: 'Tipo' }
+           
+            list:
+                fields:
+                    - 'Tipo' 
+                    - 'Tickets'
 
         Estado:
             class: Blox\TicketBundle\Entity\Estado
 
+            form:
+                fields:
+                    - { property: 'Estado', label: 'Estado' }
+           
+            list:
+                fields:
+                    - 'Estado' 
+                    - 'Tickets'
+
         Nivel:
             class: Blox\TicketBundle\Entity\Nivel
+
+            form:
+                fields:
+                    - { property: 'nivel', label: 'Nivel' }
+           
+            list:
+                fields:
+                    - 'Nivel' 
+                    - 'Tickets'
 
         User:
             class: Blox\TicketBundle\Entity\User
 
         Empresa:
             class: Blox\TicketBundle\Entity\Empresa
+
+            form:
+                fields:
+                    - { property: 'empresa', label: 'Empresa' }
+           
+            list:
+                fields:
+                    - 'Empresa' 
+                    - 'Tickets'
 
         Ticket:
             class: Blox\TicketBundle\Entity\Ticket
