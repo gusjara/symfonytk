@@ -2,30 +2,69 @@
 
 namespace Blox\TicketBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
- *
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="Blox\TicketBundle\Repository\UserRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
  */
-class User
+class User extends BaseUser
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
+    public function __construct()
+    {
+        $this->categoria = new \Doctrine\Common\Collections\ArrayCollection();
+        
+        parent::__construct();
+        // your own logic
+    }
+    
 
     /**
+     * @var string
+     *
+     * 
+     * @ORM\Column(name="nombre", type="string", length=255)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * 
+     * @ORM\Column(name="apellido", type="string", length=255)
+     */
+    private $apellido;
+
+    /**
+     * @var string
+     *
+     * 
+     * @ORM\Column(name="telefono", type="string", length=12)
+     */
+    private $telefono;
+
+    /**
+     * @var string
+     *
+     * 
+     * @ORM\Column(name="dni", type="string", length=10)
+     */
+    private $dni;
+
+     /**
      * @ORM\ManyToMany(targetEntity="Categoria", inversedBy="users", cascade={"persist"})
      * @ORM\JoinTable(name="user_categoria")
      */
     protected $categoria;
+
 
 
     /**
@@ -36,13 +75,6 @@ class User
     public function getId()
     {
         return $this->id;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->categoria = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

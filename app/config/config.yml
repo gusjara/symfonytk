@@ -6,6 +6,17 @@ imports:
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Blox\TicketBundle\Entity\User
+
+    from_email:
+        address: mail@email.com
+        sender_name: Tickets
+        #address: "%mailer_user%"
+        #sender_name: "%mailer_user%"
+
 parameters:
     locale: es
 
@@ -31,6 +42,9 @@ framework:
     assets: ~
     php_errors:
         log: true
+    ##SE AGREGEGA PARA USAR EL TEMPLATING DE FOSUSERBUNDLE
+    templating:
+        engines: ['twig']
 
 # Twig Configuration
 twig:
