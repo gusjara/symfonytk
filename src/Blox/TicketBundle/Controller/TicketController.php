@@ -54,7 +54,6 @@ class TicketController extends BaseAdminController
 
             $this->dispatch(EasyAdminEvents::PRE_UPDATE, array('entity' => $entity));
             
-
             $this->executeDynamicMethod('preUpdate<EntityName>Entity', array($entity));
             $this->executeDynamicMethod('update<EntityName>Entity', array($entity));
 
