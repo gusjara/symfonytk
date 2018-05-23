@@ -5,9 +5,7 @@ easy_admin:
         
         Ticket:
             class: Blox\TicketBundle\Entity\Ticket
-
             
-
             form:
                 fields:
                     - { property: 'descripcion', label: 'Descripcion' }
@@ -26,8 +24,8 @@ easy_admin:
                     - { property: 'categoria', label: 'Categoria' }
             list:
                 fields:
-                    - { property: 'Categoria' }
-                    - { property: 'Tickets' }
+                    - { property: 'categoria' }
+                    - { property: 'tickets', class: '' }
 
                 actions: 
                         - { name: 'edit', label: 'Editar', title: 'Edit', icon: 'pencil' }
@@ -44,8 +42,8 @@ easy_admin:
            
             list:
                 fields:
-                    - 'Tipo' 
-                    - 'Tickets'
+                    - 'tipo' 
+                    - 'tickets'
 
         Estado:
             class: Blox\TicketBundle\Entity\Estado
@@ -56,8 +54,8 @@ easy_admin:
            
             list:
                 fields:
-                    - 'Estado' 
-                    - 'Tickets'
+                    - 'estado' 
+                    - 'tickets'
 
         Nivel:
             class: Blox\TicketBundle\Entity\Nivel
@@ -68,8 +66,8 @@ easy_admin:
            
             list:
                 fields:
-                    - 'Nivel' 
-                    - 'Tickets'
+                    - 'nivel' 
+                    - 'tickets'
 
         User:
             class: Blox\TicketBundle\Entity\User
@@ -83,5 +81,5 @@ easy_admin:
            
             list:
                 fields:
-                    - 'Empresa' 
-                    - 'Tickets'
+                    - 'empresa' 
+                    - 'tickets'
