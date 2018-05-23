@@ -6,6 +6,18 @@ easy_admin:
         Ticket:
             class: Blox\TicketBundle\Entity\Ticket
 
+            
+
+            form:
+                fields:
+                    - { property: 'descripcion', label: 'Descripcion' }
+                    - { property: 'tipo', label: 'Tipo' }
+                    - { property: 'categoria', label: 'Categoria' }
+                    - { property: 'nivel', label: 'Nivel' }
+                    - { property: 'estado', label: 'Estado' }
+                    - { property: 'empresa', label: 'Empresa' }
+
+
         Categoria:
             class: Blox\TicketBundle\Entity\Categoria
             #controller: Blog\BlogBundle\Controller\PostController
@@ -40,7 +52,7 @@ easy_admin:
 
             form:
                 fields:
-                    - { property: 'Estado', label: 'Estado' }
+                    - { property: 'estado', label: 'Estado' }
            
             list:
                 fields:

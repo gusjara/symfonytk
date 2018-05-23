@@ -7,8 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Ticket
  *
- * @ORM\Table(name="ticket")
  * @ORM\Entity(repositoryClass="Blox\TicketBundle\Repository\TicketRepository")
+ * @ORM\Table(name="ticket")
+ * @ORM\HasLifecycleCallbacks
  */
 class Ticket
 {
@@ -81,7 +82,7 @@ class Ticket
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime", nullable=true)
+     * @ORM\Column(name="update_at", type="datetime", nullable=false)
      */
     private $updateAt;
 
@@ -341,14 +342,18 @@ class Ticket
      */
     public function __construct()
     {
-        
         $this->setCreatedAt(new \DateTime());
-        //$this->setUpdateAt(new \DateTime());
+        if( $this->getUpdateAt() == null){
+            $this->setUpdateAt(new \DateTime());
+        }
+        
     }
 
+    
     /**
-     * @ORM\PreUpdate
-     * @ORM\PrePersist
+     *
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
      */
     public function setTimeClose() {
         $this->setUpdateAt = (new \DateTime());
