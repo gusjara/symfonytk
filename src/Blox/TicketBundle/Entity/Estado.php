@@ -67,5 +67,49 @@ class Estado
     {
         return $this->estado;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add ticket
+     *
+     * @param \Blox\TicketBundle\Entity\Ticket $ticket
+     *
+     * @return Estado
+     */
+    public function addTicket(\Blox\TicketBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets[] = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Remove ticket
+     *
+     * @param \Blox\TicketBundle\Entity\Ticket $ticket
+     */
+    public function removeTicket(\Blox\TicketBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets->removeElement($ticket);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    public function __toString(){
+        return (string) $this->estado;
+    }
+}

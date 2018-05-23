@@ -79,5 +79,9 @@ class User
         return $this->categoria;
     }
 
+    public function __toString(){
+        return (string) $this->user;
+    }
+
    
 }

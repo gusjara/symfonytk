@@ -37,5 +37,51 @@ class User
     {
         return $this->id;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categoria = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add categorium
+     *
+     * @param \Blox\TicketBundle\Entity\Categoria $categorium
+     *
+     * @return User
+     */
+    public function addCategorium(\Blox\TicketBundle\Entity\Categoria $categorium)
+    {
+        $this->categoria[] = $categorium;
+
+        return $this;
+    }
+
+    /**
+     * Remove categorium
+     *
+     * @param \Blox\TicketBundle\Entity\Categoria $categorium
+     */
+    public function removeCategorium(\Blox\TicketBundle\Entity\Categoria $categorium)
+    {
+        $this->categoria->removeElement($categorium);
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    public function __toString(){
+        return (string) $this->user;
+    }
+
+   
+}

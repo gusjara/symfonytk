@@ -54,7 +54,7 @@ class Ticket
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id_create", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="user_id_create", referencedColumnName="id", nullable=true)
      */
     private $userIdCreate;
 
@@ -81,7 +81,7 @@ class Ticket
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime")
+     * @ORM\Column(name="update_at", type="datetime", nullable=true)
      */
     private $updateAt;
 
@@ -335,5 +335,26 @@ class Ticket
     {
         return $this->updateAt;
     }
-}
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        
+        $this->setCreatedAt(new \DateTime());
+        //$this->setUpdateAt(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     */
+    public function setTimeClose() {
+        $this->setUpdateAt = (new \DateTime());
+    }
+
+    public function __toString(){
+        return (string) $this->ticket;
+    }
+}

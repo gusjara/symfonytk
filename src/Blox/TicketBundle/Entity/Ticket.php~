@@ -22,51 +22,45 @@ class Ticket
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Tipo", inversedBy="tickets")
+     * @ORM\JoinColumn(name="tipo_id", referencedColumnName="id", nullable=false)
      */
     private $tipo;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="categoria", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="tickets")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id", nullable=false)
      */
     private $categoria;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="nivel", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Nivel", inversedBy="tickets")
+     * @ORM\JoinColumn(name="nivel_id", referencedColumnName="id", nullable=false)
      */
     private $nivel;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="estado", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Estado", inversedBy="tickets")
+     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id", nullable=false)
      */
     private $estado;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="empresa", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Empresa", inversedBy="tickets")
+     * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id", nullable=false)
      */
     private $empresa;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="user_id_create", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id_create", referencedColumnName="id", nullable=false)
      */
     private $userIdCreate;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="user_id_close", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id_close", referencedColumnName="id", nullable=true)
      */
     private $userIdClose;
 
