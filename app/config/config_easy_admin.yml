@@ -14,6 +14,15 @@ easy_admin:
                     - { property: 'nivel', label: 'Nivel' }
                     - { property: 'estado', label: 'Estado' }
                     - { property: 'empresa', label: 'Empresa' }
+            list:
+                fields:
+                - { property: 'id', label: '#ID' }
+                - { property: 'descripcion', label: 'Descripcion' }
+                - { property: 'tipo', label: 'Tipo' }
+                - { property: 'categoria', label: 'Categoria' }
+                - { property: 'nivel', label: 'Nivel' }
+                - { property: 'estado', label: 'Estado' }
+                - { property: 'empresa', label: 'Empresa' }
 
             list:
                 actions: ['Ver']
