@@ -1,6 +1,7 @@
 easy_admin:
     design:
         brand_color: '#1ABC9C'
+        form_theme: 'vertical'
     entities:
         
         Ticket:
@@ -8,12 +9,12 @@ easy_admin:
             
             form:
                 fields:
-                    - { property: 'descripcion', label: 'Descripcion' }
                     - { property: 'tipo', label: 'Tipo' }
                     - { property: 'categoria', label: 'Categoria' }
                     - { property: 'nivel', label: 'Nivel' }
                     - { property: 'estado', label: 'Estado' }
                     - { property: 'empresa', label: 'Empresa' }
+                    - { property: 'descripcion', label: 'Descripción', type: 'textarea' }
             list:
                 fields:
                 - { property: 'id', label: '#ID' }
@@ -23,6 +24,22 @@ easy_admin:
                 - { property: 'nivel', label: 'Nivel' }
                 - { property: 'estado', label: 'Estado' }
                 - { property: 'empresa', label: 'Empresa' }
+                actions:
+                    - { name: 'show', icon: 'eye', label: 'Ver', role: 'button' }
+                    - { name: 'delete', icon: 'trash', label: 'Eliminar' }
+                    - { name: 'edit', icon: 'pencil', label: 'Editar' }
+                    #- { name: 'search', icon: 'search', label: 'Buscar' }
+                    - { name: 'new', icon: 'plus', label: 'Nuevo' }
+                    #- { name: 'list.row_actions', label: 'Acciones'}
+             
+            show:
+                fields:
+                - { property: 'categoria', label: 'Categoria' }
+                - { property: 'tipo', label: 'Tipo' }
+                - { property: 'nivel', label: 'Nivel' }
+                - { property: 'created_at', type: 'date', label: 'Creado' }
+                - { property: 'estado', label: 'Estado' }
+                - { property: 'descripcion', label: 'Descripcion' }
 
 
         Categoria:

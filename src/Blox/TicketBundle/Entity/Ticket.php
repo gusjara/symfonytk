@@ -68,9 +68,16 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="string", length=255)
+     * @ORM\Column(name="descripcion", type="text")
      */
     private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="respuesta", type="text")
+     */
+    private $respuesta;
 
     /**
      * @var \DateTime
