@@ -6,7 +6,7 @@ easy_admin:
         
         Ticket:
             class: Blox\TicketBundle\Entity\Ticket
-            
+
             form:
                 fields:
                     - { property: 'tipo', label: 'Tipo' }
@@ -40,6 +40,10 @@ easy_admin:
                 - { property: 'created_at', type: 'date', label: 'Creado' }
                 - { property: 'estado', label: 'Estado' }
                 - { property: 'descripcion', label: 'Descripcion' }
+
+            list:
+                actions: ['Ver']
+
 
 
         Categoria:
