@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new Blox\TicketBundle\BloxTicketBundle(),
             //FoSUserBundle
             new FOS\UserBundle\FOSUserBundle(),
+            //se agrega el bundle de FixtureBundle para datos en la DB
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
