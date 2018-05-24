@@ -7,8 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Ticket
  *
- * @ORM\Table(name="ticket")
  * @ORM\Entity(repositoryClass="Blox\TicketBundle\Repository\TicketRepository")
+ * @ORM\Table(name="ticket")
+ * @ORM\HasLifecycleCallbacks
  */
 class Ticket
 {
@@ -54,7 +55,7 @@ class Ticket
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id_create", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="user_id_create", referencedColumnName="id", nullable=true)
      */
     private $userIdCreate;
 
@@ -67,9 +68,16 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="string", length=255)
+     * @ORM\Column(name="descripcion", type="text")
      */
     private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="respuesta", type="text")
+     */
+    private $respuesta;
 
     /**
      * @var \DateTime
@@ -81,7 +89,7 @@ class Ticket
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime")
+     * @ORM\Column(name="update_at", type="datetime", nullable=false)
      */
     private $updateAt;
 
@@ -335,5 +343,30 @@ class Ticket
     {
         return $this->updateAt;
     }
-}
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        if( $this->getUpdateAt() == null){
+            $this->setUpdateAt(new \DateTime());
+        }
+        
+    }
+
+    
+    /**
+     *
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
+     */
+    public function setTimeClose() {
+        $this->setUpdateAt = (new \DateTime());
+    }
+
+    public function __toString(){
+        return (string) $this->ticket;
+    }
+}

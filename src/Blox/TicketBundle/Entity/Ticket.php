@@ -344,7 +344,32 @@ class Ticket
         return $this->updateAt;
     }
 
+   
     /**
+     * Set respuesta
+     *
+     * @param string $respuesta
+     *
+     * @return Ticket
+     */
+    public function setRespuesta($respuesta)
+    {
+        $this->respuesta = $respuesta;
+
+        return $this;
+    }
+
+    /**
+     * Get respuesta
+     *
+     * @return string
+     */
+    public function getRespuesta()
+    {
+        return $this->respuesta;
+    }
+
+     /**
      * Constructor
      */
     public function __construct()
@@ -369,4 +394,5 @@ class Ticket
     public function __toString(){
         return (string) $this->ticket;
     }
+
 }

@@ -7,10 +7,12 @@ namespace Blox\TicketBundle\DataFixtures;
 // use Doctrine\Bundle\FixturesBundle\ORMFixtureInterface;
 // use Doctrine\Common\Persistence\ObjectManager;
 
-use Blox\TicketBundle\Entity\Empresa;
-use Blox\TicketBundle\Entity\Estado;
-use Blox\TicketBundle\Entity\Nivel;
+use Blox\TicketBundle\Entity\Tipo;
 use Blox\TicketBundle\Entity\User;
+use Blox\TicketBundle\Entity\Nivel;
+use Blox\TicketBundle\Entity\Estado;
+use Blox\TicketBundle\Entity\Empresa;
+use Blox\TicketBundle\Entity\Categoria;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -76,6 +78,25 @@ class AppFixtures extends Fixture
             $empresa = new Empresa();
             $empresa->setEmpresa('Grupo Crear');
             $manager->persist($empresa);
+
+            //crear tipo
+            $tipo = new Tipo();
+            $tipo->setTipo('Consultas');
+            $manager->persist($tipo);
+
+
+            //categoria
+            $categoria = new Categoria();
+            $categoria->setCategoria('RRHH');
+            $manager->persist($categoria);
+
+            $categoria = new Categoria();
+            $categoria->setCategoria('Sistemas');
+            $manager->persist($categoria);
+
+            $categoria = new Categoria();
+            $categoria->setCategoria('Test');
+            $manager->persist($categoria);
      
 
         $manager->flush();

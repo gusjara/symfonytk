@@ -2,10 +2,11 @@
 
 namespace Blox\TicketBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
-use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 
 class TicketController extends BaseAdminController
 {
@@ -73,4 +74,41 @@ class TicketController extends BaseAdminController
 
         return $this->executeDynamicMethod('render<EntityName>Template', array('edit', $this->entity['templates']['edit'], $parameters));
     }
+
+
+
+    /**
+     * @Route(path = "/admin/ticket/restock", name = "ticket_restock")
+     * 
+     */
+    public function restockAction(Request $request)
+    {
+        // change the properties of the given entity and save the changes
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository('BloxTicketBundle:Ticket');
+
+        $id = $request->query->get('id');
+        $entity = $repository->find($id);
+       
+       // $repo_estado = $this->getDoctrine()->getRepository('BloxTicketBundle:Estado');
+
+       // $r = $entity->getEstado()->getId();
+       // $entity->setEstado(1);
+
+       // $entity->getEstado();
+        /*dump($entity);
+        die;*/
+        //$em->persist($entity);
+        $em->flush();
+
+        // redirect to the 'list' view of the given entity
+        return $this->redirectToRoute('easyadmin', array(
+            'action' => 'list',
+            //'entity' => $this->request->query->get('entity'),
+        ));
+
+        
+    }
+        
+
 }

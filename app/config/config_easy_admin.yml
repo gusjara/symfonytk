@@ -15,6 +15,19 @@ easy_admin:
                     - { property: 'estado', label: 'Estado' }
                     - { property: 'empresa', label: 'Empresa' }
                     - { property: 'descripcion', label: 'Descripción', type: 'textarea' }
+
+            edit:
+                fields:
+                    - { property: 'tipo', label: 'Tipo',  css_class: 'col-md-2', type_options: { disabled: true } }
+                    - { property: 'categoria', label: 'Categoria',  css_class: 'col-md-3', type_options: { disabled: true } }
+                    - { property: 'nivel', label: 'Nivel',  css_class: 'col-md-2', type_options: { disabled: true } }
+                    - { property: 'estado', label: 'Estado', css_class: 'col-md-2', type_options: { disabled: false } }
+                    - { property: 'empresa', label: 'Empresa', css_class: 'col-md-3', type_options: { disabled: true } }
+                    - { property: 'descripcion', label: 'Descripción', css_class: 'col-md-6', type: 'textarea', type_options: { disabled: true } }
+                    - { property: 'respuesta', label: 'Respuesta', css_class: 'col-md-6', type: 'textarea' }
+                actions:
+                    - { name: 'ticket_restock', type: 'route', icon: 'eye', label: 'Aceptar', role: 'button', css_class: 'pull-right'}
+                    
             list:
                 fields:
                 - { property: 'id', label: '#ID' }
