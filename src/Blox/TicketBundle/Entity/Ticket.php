@@ -75,7 +75,7 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="respuesta", type="text")
+     * @ORM\Column(name="respuesta", type="text", nullable=true)
      */
     private $respuesta;
 
