@@ -65,6 +65,15 @@ class Ticket
      */
     private $userIdClose;
 
+    //Creo este nuevo campo para guardar los usuario que ven los tickets. 
+    //al hacer click en el boton ver se va guardar el nombre del usuario que vio.
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="users_view", type="string", nullable=true)
+     */
+    private $usersView;
+
     /**
      * @var string
      *
@@ -398,4 +407,28 @@ class Ticket
         return (string) $this->ticket;
     }
 
+
+    /**
+     * Set usersView
+     *
+     * @param string $usersView
+     *
+     * @return Ticket
+     */
+    public function setUsersView($usersView)
+    {
+        $this->usersView = $usersView;
+
+        return $this;
+    }
+
+    /**
+     * Get usersView
+     *
+     * @return string
+     */
+    public function getUsersView()
+    {
+        return $this->usersView;
+    }
 }

@@ -65,6 +65,15 @@ class Ticket
      */
     private $userIdClose;
 
+    //Creo este nuevo campo para guardar los usuario que ven los tickets. 
+    //al hacer click en el boton ver se va guardar el nombre del usuario que vio.
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="users_view", type="string", nullable=true)
+     */
+    private $usersView;
+
     /**
      * @var string
      *
@@ -190,6 +199,32 @@ class Ticket
 
         return $this;
     }
+
+    
+    /**
+     * Set estado
+     *
+     * @param \Blox\TicketBundle\Entity\Estado $estado
+     *
+     * @return Ticket
+     */
+    public function setEstado(\Blox\TicketBundle\Entity\Estado $estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \Blox\TicketBundle\Entity\Estado
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+    
 
     /**
      * Get empresa
