@@ -176,30 +176,7 @@ class Ticket
         return $this->nivel;
     }
 
-    /**
-     * Set estado
-     *
-     * @param string $estado
-     *
-     * @return Ticket
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return string
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
+   
     /**
      * Set empresa
      *
@@ -213,6 +190,32 @@ class Ticket
 
         return $this;
     }
+
+    
+    /**
+     * Set estado
+     *
+     * @param \Blox\TicketBundle\Entity\Estado $estado
+     *
+     * @return Ticket
+     */
+    public function setEstado(\Blox\TicketBundle\Entity\Estado $estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \Blox\TicketBundle\Entity\Estado
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+    
 
     /**
      * Get empresa

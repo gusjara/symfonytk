@@ -25,9 +25,12 @@ easy_admin:
                     - { property: 'empresa', label: 'Empresa', css_class: 'col-md-3', type_options: { disabled: true } }
                     - { property: 'descripcion', label: 'Descripción', css_class: 'col-md-6', type: 'textarea', type_options: { disabled: true } }
                     - { property: 'respuesta', label: 'Respuesta', css_class: 'col-md-6', type: 'textarea' }
-                actions:
-                    - { name: 'ticket_restock', type: 'route', icon: 'eye', label: 'Aceptar', role: 'button', css_class: 'pull-right'}
-                    
+                actions: 
+                    - { name: 'ticket_success', type: 'route', icon: 'eye', label: 'Aceptar', role: 'button', css_class: 'pull-right btn btn-success'}
+                    - { name: 'ticket_rejected', type: 'route', icon: 'eye', label: 'Rechazar', role: 'button', css_class: 'pull-left btn btn-danger'}
+                    - { name: 'delete', css_class: 'btn btn-info hidden'}
+                    - { name: 'edit', css_class: 'btn btn-info hidden', type: 'submit', role: 'button'}
+
             list:
                 fields:
                 - { property: 'id', label: '#ID' }

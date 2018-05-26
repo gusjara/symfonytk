@@ -5,6 +5,7 @@ namespace Blox\TicketBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
@@ -46,6 +47,8 @@ class TicketController extends BaseAdminController
         $editForm = $this->executeDynamicMethod('create<EntityName>EditForm', array($entity, $fields));
         $deleteForm = $this->createDeleteForm($this->entity['name'], $id);
 
+        $editForm->add('save', SubmitType::class, array('class' => 'hidden'));
+
         $editForm->handleRequest($this->request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             //$this->updateEntity($entity);
@@ -78,10 +81,10 @@ class TicketController extends BaseAdminController
 
 
     /**
-     * @Route(path = "/admin/ticket/restock", name = "ticket_restock")
+     * @Route(path = "/admin/ticket/success", name = "ticket_success")
      * 
      */
-    public function restockAction(Request $request)
+    public function ticketSuccessAction(Request $request)
     {
         // change the properties of the given entity and save the changes
         $em = $this->getDoctrine()->getManager();
@@ -90,15 +93,38 @@ class TicketController extends BaseAdminController
         $id = $request->query->get('id');
         $entity = $repository->find($id);
        
-       // $repo_estado = $this->getDoctrine()->getRepository('BloxTicketBundle:Estado');
+        $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findById(2));
 
-       // $r = $entity->getEstado()->getId();
-       // $entity->setEstado(1);
+        //$r = $entity->getEstado()->getId();
+        $entity->setEstado($repo_estado);
 
-       // $entity->getEstado();
-        /*dump($entity);
-        die;*/
-        //$em->persist($entity);
+        $em->flush();
+
+        // redirect to the 'list' view of the given entity
+        return $this->redirectToRoute('easyadmin', array(
+            'action' => 'list',
+            //'entity' => $this->request->query->get('entity'),
+        ));
+    }
+
+     /**
+     * @Route(path = "/admin/ticket/rejected", name = "ticket_rejected")
+     * 
+     */
+    public function ticketRejectedAction(Request $request)
+    {
+        // change the properties of the given entity and save the changes
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository('BloxTicketBundle:Ticket');
+
+        $id = $request->query->get('id');
+        $entity = $repository->find($id);
+       
+        $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findById(3));
+
+        //$r = $entity->getEstado()->getId();
+        $entity->setEstado($repo_estado);
+
         $em->flush();
 
         // redirect to the 'list' view of the given entity
