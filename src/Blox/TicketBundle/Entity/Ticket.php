@@ -104,9 +104,24 @@ class Ticket
 
 
     /**
+     *
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
+     */
+    public function setTimeClose() {
+        $this->setUpdateAt = (new \DateTime());
+    }
+
+    //funcion convert to string
+    public function __toString(){
+        return (string) $this->ticket;
+    }
+
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -114,174 +129,27 @@ class Ticket
     }
 
     /**
-     * Set tipo
+     * Set usersView
      *
-     * @param string $tipo
+     * @param string $usersView
      *
      * @return Ticket
      */
-    public function setTipo($tipo)
+    public function setUsersView($usersView)
     {
-        $this->tipo = $tipo;
+        $this->usersView = $usersView;
 
         return $this;
     }
 
     /**
-     * Get tipo
+     * Get usersView
      *
      * @return string
      */
-    public function getTipo()
+    public function getUsersView()
     {
-        return $this->tipo;
-    }
-
-    /**
-     * Set categoria
-     *
-     * @param string $categoria
-     *
-     * @return Ticket
-     */
-    public function setCategoria($categoria)
-    {
-        $this->categoria = $categoria;
-
-        return $this;
-    }
-
-    /**
-     * Get categoria
-     *
-     * @return string
-     */
-    public function getCategoria()
-    {
-        return $this->categoria;
-    }
-
-    /**
-     * Set nivel
-     *
-     * @param string $nivel
-     *
-     * @return Ticket
-     */
-    public function setNivel($nivel)
-    {
-        $this->nivel = $nivel;
-
-        return $this;
-    }
-
-    /**
-     * Get nivel
-     *
-     * @return string
-     */
-    public function getNivel()
-    {
-        return $this->nivel;
-    }
-
-   
-    /**
-     * Set empresa
-     *
-     * @param string $empresa
-     *
-     * @return Ticket
-     */
-    public function setEmpresa($empresa)
-    {
-        $this->empresa = $empresa;
-
-        return $this;
-    }
-
-    
-    /**
-     * Set estado
-     *
-     * @param \Blox\TicketBundle\Entity\Estado $estado
-     *
-     * @return Ticket
-     */
-    public function setEstado(\Blox\TicketBundle\Entity\Estado $estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return \Blox\TicketBundle\Entity\Estado
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-    
-
-    /**
-     * Get empresa
-     *
-     * @return string
-     */
-    public function getEmpresa()
-    {
-        return $this->empresa;
-    }
-
-    /**
-     * Set userIdCreate
-     *
-     * @param string $userIdCreate
-     *
-     * @return Ticket
-     */
-    public function setUserIdCreate($userIdCreate)
-    {
-        $this->userIdCreate = $userIdCreate;
-
-        return $this;
-    }
-
-    /**
-     * Get userIdCreate
-     *
-     * @return string
-     */
-    public function getUserIdCreate()
-    {
-        return $this->userIdCreate;
-    }
-
-    /**
-     * Set userIdClose
-     *
-     * @param string $userIdClose
-     *
-     * @return Ticket
-     */
-    public function setUserIdClose($userIdClose)
-    {
-        $this->userIdClose = $userIdClose;
-
-        return $this;
-    }
-
-    /**
-     * Get userIdClose
-     *
-     * @return string
-     */
-    public function getUserIdClose()
-    {
-        return $this->userIdClose;
+        return $this->usersView;
     }
 
     /**
@@ -306,6 +174,30 @@ class Ticket
     public function getDescripcion()
     {
         return $this->descripcion;
+    }
+
+    /**
+     * Set respuesta
+     *
+     * @param string $respuesta
+     *
+     * @return Ticket
+     */
+    public function setRespuesta($respuesta)
+    {
+        $this->respuesta = $respuesta;
+
+        return $this;
+    }
+
+    /**
+     * Get respuesta
+     *
+     * @return string
+     */
+    public function getRespuesta()
+    {
+        return $this->respuesta;
     }
 
     /**
@@ -356,79 +248,171 @@ class Ticket
         return $this->updateAt;
     }
 
-   
     /**
-     * Set respuesta
+     * Set tipo
      *
-     * @param string $respuesta
+     * @param \Blox\TicketBundle\Entity\Tipo $tipo
      *
      * @return Ticket
      */
-    public function setRespuesta($respuesta)
+    public function setTipo(\Blox\TicketBundle\Entity\Tipo $tipo)
     {
-        $this->respuesta = $respuesta;
+        $this->tipo = $tipo;
 
         return $this;
     }
 
     /**
-     * Get respuesta
+     * Get tipo
      *
-     * @return string
+     * @return \Blox\TicketBundle\Entity\Tipo
      */
-    public function getRespuesta()
+    public function getTipo()
     {
-        return $this->respuesta;
+        return $this->tipo;
     }
-
-     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->setCreatedAt(new \DateTime());
-        if( $this->getUpdateAt() == null){
-            $this->setUpdateAt(new \DateTime());
-        }
-        
-    }
-
-    
-    /**
-     *
-     * @ORM\PreUpdate()
-     * @ORM\PrePersist()
-     */
-    public function setTimeClose() {
-        $this->setUpdateAt = (new \DateTime());
-    }
-
-    public function __toString(){
-        return (string) $this->ticket;
-    }
-
 
     /**
-     * Set usersView
+     * Set categoria
      *
-     * @param string $usersView
+     * @param \Blox\TicketBundle\Entity\Categoria $categoria
      *
      * @return Ticket
      */
-    public function setUsersView($usersView)
+    public function setCategoria(\Blox\TicketBundle\Entity\Categoria $categoria)
     {
-        $this->usersView = $usersView;
+        $this->categoria = $categoria;
 
         return $this;
     }
 
     /**
-     * Get usersView
+     * Get categoria
      *
-     * @return string
+     * @return \Blox\TicketBundle\Entity\Categoria
      */
-    public function getUsersView()
+    public function getCategoria()
     {
-        return $this->usersView;
+        return $this->categoria;
+    }
+
+    /**
+     * Set nivel
+     *
+     * @param \Blox\TicketBundle\Entity\Nivel $nivel
+     *
+     * @return Ticket
+     */
+    public function setNivel(\Blox\TicketBundle\Entity\Nivel $nivel)
+    {
+        $this->nivel = $nivel;
+
+        return $this;
+    }
+
+    /**
+     * Get nivel
+     *
+     * @return \Blox\TicketBundle\Entity\Nivel
+     */
+    public function getNivel()
+    {
+        return $this->nivel;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param \Blox\TicketBundle\Entity\Estado $estado
+     *
+     * @return Ticket
+     */
+    public function setEstado(\Blox\TicketBundle\Entity\Estado $estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \Blox\TicketBundle\Entity\Estado
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param \Blox\TicketBundle\Entity\Empresa $empresa
+     *
+     * @return Ticket
+     */
+    public function setEmpresa(\Blox\TicketBundle\Entity\Empresa $empresa)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return \Blox\TicketBundle\Entity\Empresa
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    /**
+     * Set userIdCreate
+     *
+     * @param \Blox\TicketBundle\Entity\User $userIdCreate
+     *
+     * @return Ticket
+     */
+    public function setUserIdCreate(\Blox\TicketBundle\Entity\User $userIdCreate = null)
+    {
+        $this->userIdCreate = $userIdCreate;
+
+        return $this;
+    }
+
+    /**
+     * Get userIdCreate
+     *
+     * @return \Blox\TicketBundle\Entity\User
+     */
+    public function getUserIdCreate()
+    {
+        return $this->userIdCreate;
+    }
+
+    /**
+     * Set userIdClose
+     *
+     * @param \Blox\TicketBundle\Entity\User $userIdClose
+     *
+     * @return Ticket
+     */
+    public function setUserIdClose(\Blox\TicketBundle\Entity\User $userIdClose = null)
+    {
+        $this->userIdClose = $userIdClose;
+
+        return $this;
+    }
+
+    /**
+     * Get userIdClose
+     *
+     * @return \Blox\TicketBundle\Entity\User
+     */
+    public function getUserIdClose()
+    {
+        return $this->userIdClose;
     }
 }

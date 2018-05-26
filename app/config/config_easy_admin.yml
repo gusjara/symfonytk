@@ -52,7 +52,7 @@ easy_admin:
                 - { property: 'tipo', label: 'Tipo' }
                 - { property: 'categoria', label: 'Categoria' }
                 - { property: 'nivel', label: 'Nivel' }
-                - { property: 'tiempoRespuesta', label: 'Tiempo de respuesta', class: 'Blox\TicketBundle\Entity\Nivel' }
+                - { property: 'tiempoRespuesta', label: 'Tiempo de respuesta' }
                 - { property: 'estado', label: 'Estado' }
                 - { property: 'empresa', label: 'Empresa' }
                 actions:
@@ -122,6 +122,7 @@ easy_admin:
                 fields:
                     - 'nivel' 
                     - 'tickets'
+                    - 'tiempoRespuesta'
 
         User:
             class: Blox\TicketBundle\Entity\User
