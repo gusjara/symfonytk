@@ -31,6 +31,10 @@ class AppFixtures extends Fixture
 
             //creo el estado Verificando
             $estado = new Estado();
+            $estado->setEstado('Nuevo');
+            $manager->persist($estado);
+            
+            $estado = new Estado();
             $estado->setEstado('Verificando');
             $manager->persist($estado);
 

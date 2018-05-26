@@ -6,13 +6,13 @@ easy_admin:
         
         Ticket:
             class: Blox\TicketBundle\Entity\Ticket
-
+            controller: Blox\TicketBundle\Controller\TicketController
             form:
                 fields:
                     - { property: 'tipo', label: 'Tipo' }
                     - { property: 'categoria', label: 'Categoria' }
                     - { property: 'nivel', label: 'Nivel' }
-                    - { property: 'estado', label: 'Estado' }
+                   # - { property: 'estado', label: 'Estado' }
                     - { property: 'empresa', label: 'Empresa' }
                     - { property: 'descripcion', label: 'Descripción', type: 'textarea' }
 
@@ -21,7 +21,7 @@ easy_admin:
                     - { property: 'tipo', label: 'Tipo',  css_class: 'col-md-2', type_options: { disabled: true } }
                     - { property: 'categoria', label: 'Categoria',  css_class: 'col-md-3', type_options: { disabled: true } }
                     - { property: 'nivel', label: 'Nivel',  css_class: 'col-md-2', type_options: { disabled: true } }
-                    - { property: 'estado', label: 'Estado', css_class: 'col-md-2', type_options: { disabled: false } }
+                    - { property: 'estado', label: 'Estado', css_class: 'col-md-2 hidden', type_options: { disabled: true } }
                     - { property: 'empresa', label: 'Empresa', css_class: 'col-md-3', type_options: { disabled: true } }
                     - { property: 'descripcion', label: 'Descripción', css_class: 'col-md-6', type: 'textarea', type_options: { disabled: true } }
                     - { property: 'respuesta', label: 'Respuesta', css_class: 'col-md-6', type: 'textarea' }
@@ -30,6 +30,20 @@ easy_admin:
                     - { name: 'ticket_rejected', type: 'route', icon: 'eye', label: 'Rechazar', role: 'button', css_class: 'pull-left btn btn-danger'}
                     - { name: 'delete', css_class: 'btn btn-info hidden'}
                     - { name: 'edit', css_class: 'btn btn-info hidden', type: 'submit', role: 'button'}
+
+            show:                                           
+                fields:
+                - { property: 'categoria', label: 'Categoria' }
+                - { property: 'tipo', label: 'Tipo' }
+                - { property: 'nivel', label: 'Nivel' }
+                - { property: 'created_at', type: 'date', label: 'Creado' }
+                - { property: 'estado', label: 'Estado' }
+                - { property: 'descripcion', label: 'Descripcion' }
+                actions:
+                     - { name: 'ticket_verified', type: 'route', icon: 'undo', label: 'Volver al listado', role: 'button' }
+                     - { name: 'delete', css_class: 'btn btn-info hidden'}  
+                     - { name: 'list', css_class: 'btn btn-info hidden'} 
+                     - { name: 'edit', css_class: 'btn btn-info hidden'} 
 
             list:
                 fields:
@@ -48,14 +62,7 @@ easy_admin:
                     - { name: 'new', icon: 'plus', label: 'Nuevo' }
                     #- { name: 'list.row_actions', label: 'Acciones'}
              
-            show:
-                fields:
-                - { property: 'categoria', label: 'Categoria' }
-                - { property: 'tipo', label: 'Tipo' }
-                - { property: 'nivel', label: 'Nivel' }
-                - { property: 'created_at', type: 'date', label: 'Creado' }
-                - { property: 'estado', label: 'Estado' }
-                - { property: 'descripcion', label: 'Descripcion' }
+            
 
             list:
                 actions: ['Ver']

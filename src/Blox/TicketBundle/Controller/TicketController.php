@@ -20,7 +20,55 @@ class TicketController extends BaseAdminController
         parent::updateEntity($entity);
     }
 
-    protected function editAction()
+    protected function newAction()
+    {
+        $this->dispatch(EasyAdminEvents::PRE_NEW);
+
+        $entity = $this->executeDynamicMethod('createNew<EntityName>Entity');
+
+        $easyadmin = $this->request->attributes->get('easyadmin');
+        $easyadmin['item'] = $entity;
+        $this->request->attributes->set('easyadmin', $easyadmin);
+
+        $fields = $this->entity['new']['fields'];
+
+        $newForm = $this->executeDynamicMethod('create<EntityName>NewForm', array($entity, $fields));
+
+        $newForm->handleRequest($this->request);
+        if ($newForm->isSubmitted() && $newForm->isValid()) {
+
+            $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findByEstado('Nuevo'));
+            
+            $entity->setEstado($repo_estado);
+
+
+            $this->dispatch(EasyAdminEvents::PRE_PERSIST, array('entity' => $entity));
+
+            $this->executeDynamicMethod('prePersist<EntityName>Entity', array($entity));
+            $this->executeDynamicMethod('persist<EntityName>Entity', array($entity));
+
+            $this->dispatch(EasyAdminEvents::POST_PERSIST, array('entity' => $entity));
+
+            return $this->redirectToReferrer();
+        }
+
+        $this->dispatch(EasyAdminEvents::POST_NEW, array(
+            'entity_fields' => $fields,
+            'form' => $newForm,
+            'entity' => $entity,
+        ));
+
+        $parameters = array(
+            'form' => $newForm->createView(),
+            'entity_fields' => $fields,
+            'entity' => $entity,
+        );
+
+        return $this->executeDynamicMethod('render<EntityName>Template', array('new', $this->entity['templates']['new'], $parameters));
+    }
+
+
+   /* protected function editAction()
     {
         $this->dispatch(EasyAdminEvents::PRE_EDIT);
 
@@ -51,7 +99,6 @@ class TicketController extends BaseAdminController
 
         $editForm->handleRequest($this->request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            //$this->updateEntity($entity);
 
             $entity->setUpdateAt(new \DateTime());
            //$entity->setTimeClose();
@@ -76,7 +123,7 @@ class TicketController extends BaseAdminController
         );
 
         return $this->executeDynamicMethod('render<EntityName>Template', array('edit', $this->entity['templates']['edit'], $parameters));
-    }
+    }*/
 
 
 
@@ -93,7 +140,7 @@ class TicketController extends BaseAdminController
         $id = $request->query->get('id');
         $entity = $repository->find($id);
        
-        $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findById(2));
+        $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findByEstado('Aceptado'));
 
         //$r = $entity->getEstado()->getId();
         $entity->setEstado($repo_estado);
@@ -120,7 +167,7 @@ class TicketController extends BaseAdminController
         $id = $request->query->get('id');
         $entity = $repository->find($id);
        
-        $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findById(3));
+        $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findByEstado('Rechazado'));
 
         //$r = $entity->getEstado()->getId();
         $entity->setEstado($repo_estado);
@@ -132,9 +179,72 @@ class TicketController extends BaseAdminController
             'action' => 'list',
             //'entity' => $this->request->query->get('entity'),
         ));
-
         
     }
-        
 
+    /**
+     * 
+     */
+    protected function showAction()
+    {
+        $this->dispatch(EasyAdminEvents::PRE_SHOW);
+
+        $id = $this->request->query->get('id');
+        $easyadmin = $this->request->attributes->get('easyadmin');
+        $entity = $easyadmin['item'];
+
+        //test >>>>
+        /*$repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findById(6));
+        //$r = $entity->getEstado()->getId();
+        $entity->setEstado($repo_estado);
+
+        dump($entity);
+        die();*/
+
+
+
+        $fields = $this->entity['show']['fields'];
+        $deleteForm = $this->createDeleteForm($this->entity['name'], $id);
+    
+
+        $this->dispatch(EasyAdminEvents::POST_SHOW, array(
+            'deleteForm' => $deleteForm,
+            'fields' => $fields,
+            'entity' => $entity,
+        ));
+
+        $parameters = array(
+            'entity' => $entity,
+            'fields' => $fields,
+            'delete_form' => $deleteForm->createView(),
+        );
+
+        return $this->executeDynamicMethod('render<EntityName>Template', array('show', $this->entity['templates']['show'], $parameters));
+    }
+
+    /**
+     * @Route("ticket_verified", name="ticket_verified")
+     */
+    public function ticket_verified(Request $request){
+        // change the properties of the given entity and save the changes
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository('BloxTicketBundle:Ticket');
+
+        $id = $request->query->get('id');
+        $entity = $repository->find($id);
+       
+        $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findByEstado('Verificando'));
+
+        //$r = $entity->getEstado()->getId();
+        $entity->setEstado($repo_estado);
+
+        $em->flush();
+
+        // redirect to the 'list' view of the given entity
+        return $this->redirectToRoute('easyadmin', array(
+            'action' => 'list',
+        ));
+
+    }
+        
 }
