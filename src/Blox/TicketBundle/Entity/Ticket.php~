@@ -407,4 +407,28 @@ class Ticket
         return (string) $this->ticket;
     }
 
+
+    /**
+     * Set usersView
+     *
+     * @param string $usersView
+     *
+     * @return Ticket
+     */
+    public function setUsersView($usersView)
+    {
+        $this->usersView = $usersView;
+
+        return $this;
+    }
+
+    /**
+     * Get usersView
+     *
+     * @return string
+     */
+    public function getUsersView()
+    {
+        return $this->usersView;
+    }
 }

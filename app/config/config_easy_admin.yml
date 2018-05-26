@@ -38,6 +38,7 @@ easy_admin:
                 - { property: 'tipo', label: 'Tipo' }
                 - { property: 'categoria', label: 'Categoria' }
                 - { property: 'nivel', label: 'Nivel' }
+                - { property: 'tiempoRespuesta', label: 'Tiempo de respuesta', class: 'Blox\TicketBundle\Entity\Nivel' }
                 - { property: 'estado', label: 'Estado' }
                 - { property: 'empresa', label: 'Empresa' }
                 actions:
