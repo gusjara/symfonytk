@@ -75,7 +75,7 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="respuesta", type="text")
+     * @ORM\Column(name="respuesta", type="text", nullable=true)
      */
     private $respuesta;
 
@@ -176,30 +176,7 @@ class Ticket
         return $this->nivel;
     }
 
-    /**
-     * Set estado
-     *
-     * @param string $estado
-     *
-     * @return Ticket
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return string
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
+   
     /**
      * Set empresa
      *
@@ -344,7 +321,32 @@ class Ticket
         return $this->updateAt;
     }
 
+   
     /**
+     * Set respuesta
+     *
+     * @param string $respuesta
+     *
+     * @return Ticket
+     */
+    public function setRespuesta($respuesta)
+    {
+        $this->respuesta = $respuesta;
+
+        return $this;
+    }
+
+    /**
+     * Get respuesta
+     *
+     * @return string
+     */
+    public function getRespuesta()
+    {
+        return $this->respuesta;
+    }
+
+     /**
      * Constructor
      */
     public function __construct()
@@ -369,4 +371,5 @@ class Ticket
     public function __toString(){
         return (string) $this->ticket;
     }
+
 }
