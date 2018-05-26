@@ -29,43 +29,20 @@ class Nivel
     private $nivel;
 
     /**
+     * @var string
+     * @ORM\Column(name="tiempo_respuesta", length=255)
+     */
+    private $tiempoRespuesta;
+
+    /**
      * @ORM\OneToMany(targetEntity="Ticket", mappedBy="nivel")
      */
     private $tickets;
 
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
+    public function __toString(){
+        return (string) $this->nivel;
     }
-
-    /**
-     * Set nivel
-     *
-     * @param string $nivel
-     *
-     * @return Nivel
-     */
-    public function setNivel($nivel)
-    {
-        $this->nivel = $nivel;
-
-        return $this;
-    }
-
-    /**
-     * Get nivel
-     *
-     * @return string
-     */
-    public function getNivel()
-    {
-        return $this->nivel;
-    }
+    
+   
 }
-

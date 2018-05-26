@@ -44,19 +44,28 @@ class AppFixtures extends Fixture
             $estado->setEstado('Rechazado');
             $manager->persist($estado);
 
-            //creo el nivel Bajo
+            //creo el nivel Bajo y una semana en horas
             $nivel = new Nivel();
             $nivel->setNivel('Bajo');
+            $nivel->setTiempoRespuesta('168:00:00');
             $manager->persist($nivel);
 
-            //creo el nivel Medio
+            //creo el nivel Medio y 3 dias en horas
             $nivel = new Nivel();
             $nivel->setNivel('Medio');
+            $nivel->setTiempoRespuesta('72:00:00');
             $manager->persist($nivel);
 
-            //creo el nivel Alto
+            //creo el nivel Alto y un dia en horas
             $nivel = new Nivel();
             $nivel->setNivel('Alto');
+            $nivel->setTiempoRespuesta('24:00:00');
+            $manager->persist($nivel);
+
+            //creo el nivel Critico y dos horas
+            $nivel = new Nivel();
+            $nivel->setNivel('Critico');
+            $nivel->setTiempoRespuesta('02:00:00');
             $manager->persist($nivel);
 
             //creo empresa Blox

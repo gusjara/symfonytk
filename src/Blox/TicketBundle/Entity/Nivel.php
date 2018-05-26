@@ -29,15 +29,34 @@ class Nivel
     private $nivel;
 
     /**
+     * @var string
+     * @ORM\Column(name="tiempo_respuesta", length=255)
+     */
+    private $tiempoRespuesta;
+
+    /**
      * @ORM\OneToMany(targetEntity="Ticket", mappedBy="nivel")
      */
     private $tickets;
 
 
+    public function __toString(){
+        return (string) $this->nivel;
+    }
+    
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -67,12 +86,29 @@ class Nivel
     {
         return $this->nivel;
     }
+
     /**
-     * Constructor
+     * Set tiempoRespuesta
+     *
+     * @param string $tiempoRespuesta
+     *
+     * @return Nivel
      */
-    public function __construct()
+    public function setTiempoRespuesta($tiempoRespuesta)
     {
-        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tiempoRespuesta = $tiempoRespuesta;
+
+        return $this;
+    }
+
+    /**
+     * Get tiempoRespuesta
+     *
+     * @return string
+     */
+    public function getTiempoRespuesta()
+    {
+        return $this->tiempoRespuesta;
     }
 
     /**
@@ -107,9 +143,5 @@ class Nivel
     public function getTickets()
     {
         return $this->tickets;
-    }
-
-    public function __toString(){
-        return (string) $this->nivel;
     }
 }
