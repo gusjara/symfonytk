@@ -111,6 +111,8 @@ class Nivel
         return $this->tiempoRespuesta;
     }
 
+ 
+
     /**
      * Add ticket
      *
@@ -144,4 +146,6 @@ class Nivel
     {
         return $this->tickets;
     }
+
+    
 }

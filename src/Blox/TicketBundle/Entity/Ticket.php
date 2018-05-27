@@ -393,7 +393,6 @@ class Ticket
         
     }
 
-    
     /**
      *
      * @ORM\PreUpdate()
