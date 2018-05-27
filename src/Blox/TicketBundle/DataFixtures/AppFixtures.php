@@ -29,6 +29,14 @@ class AppFixtures extends Fixture
             $user->setEnabled('1');
             $manager->persist($user);
 
+            $user = new User();
+            $user->setUsername('user');
+            $user->setEmail('user@user.com');
+            $user->setPassword('$2y$12$.2kCNU.skSlC0LInVKmKkePXJ1u0YEAmd8WSXK4T0gAosuw2z4x6a');
+            $user->addRole('role_admin');
+            $user->setEnabled('1');
+            $manager->persist($user);
+
             //creo el estado Verificando
             $estado = new Estado();
             $estado->setEstado('Nuevo');

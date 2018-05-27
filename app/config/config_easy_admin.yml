@@ -117,6 +117,7 @@ easy_admin:
             form:
                 fields:
                     - { property: 'nivel', label: 'Nivel' }
+                    - { property: 'tiempoRespuesta', label: 'Tiempo para la respuesta', type: 'time' }
            
             list:
                 fields:
