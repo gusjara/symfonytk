@@ -193,16 +193,8 @@ class TicketController extends BaseAdminController
         $easyadmin = $this->request->attributes->get('easyadmin');
         $entity = $easyadmin['item'];
 
-        //test >>>>
-        /*$repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findById(6));
-        //$r = $entity->getEstado()->getId();
-        $entity->setEstado($repo_estado);
-
-        dump($entity);
-        die();*/
-
-
-
+        $entity->getNivel()->getTiempoRespuesta();
+        
         $fields = $this->entity['show']['fields'];
         $deleteForm = $this->createDeleteForm($this->entity['name'], $id);
     
@@ -232,11 +224,19 @@ class TicketController extends BaseAdminController
 
         $id = $request->query->get('id');
         $entity = $repository->find($id);
-       
+
+
         $repo_estado = current($this->getDoctrine()->getRepository('BloxTicketBundle:Estado')->findByEstado('Verificando'));
 
         //$r = $entity->getEstado()->getId();
         $entity->setEstado($repo_estado);
+
+        //insertar id de los usuario
+        $user = $this->getUser()->getUserName(); //obtener el nombre del usuario autenticado
+        
+        $arrayUser=array();
+        array_push($arrayUser, $user);
+        $entity->setUsersView(implode($arrayUser));
 
         $em->flush();
 

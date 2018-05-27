@@ -389,7 +389,28 @@ class Ticket
      */
     public function getUserIdCreate()
     {
+<<<<<<< HEAD
+        $this->setCreatedAt(new \DateTime());
+        if( $this->getUpdateAt() == null){
+            $this->setUpdateAt(new \DateTime());
+        }
+        
+    }
+
+    /**
+     *
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
+     */
+    public function setTimeClose() {
+        $this->setUpdateAt = (new \DateTime());
+    }
+
+    public function __toString(){
+        return (string) $this->ticket;
+=======
         return $this->userIdCreate;
+>>>>>>> 83cc643a682e6e606394482658fbe005dac3ce70
     }
 
     /**

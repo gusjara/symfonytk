@@ -87,29 +87,7 @@ class Nivel
         return $this->nivel;
     }
 
-    /**
-     * Set tiempoRespuesta
-     *
-     * @param string $tiempoRespuesta
-     *
-     * @return Nivel
-     */
-    public function setTiempoRespuesta($tiempoRespuesta)
-    {
-        $this->tiempoRespuesta = $tiempoRespuesta;
-
-        return $this;
-    }
-
-    /**
-     * Get tiempoRespuesta
-     *
-     * @return string
-     */
-    public function getTiempoRespuesta()
-    {
-        return $this->tiempoRespuesta;
-    }
+ 
 
     /**
      * Add ticket
