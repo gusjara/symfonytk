@@ -30,3 +30,7 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+// CONFIGURACION CORS PARA PETICIONES ACEPTADAS POR OTRAS APLICACIONES (*: cualquier dominio)
+/*header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");*/

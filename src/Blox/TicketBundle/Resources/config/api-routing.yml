@@ -1,0 +1,4 @@
+get_api_users:
+  type: rest
+  resource: "@BloxTicketBundle/Controller/ApiTicketController.php"
+  name_prefix: api_tickets_
