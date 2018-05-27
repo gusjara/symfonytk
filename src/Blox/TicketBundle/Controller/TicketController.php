@@ -3,6 +3,7 @@
 namespace Blox\TicketBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -231,12 +232,41 @@ class TicketController extends BaseAdminController
         //$r = $entity->getEstado()->getId();
         $entity->setEstado($repo_estado);
 
-        //insertar id de los usuario
         $user = $this->getUser()->getUserName(); //obtener el nombre del usuario autenticado
         
-        $arrayUser=array();
-        array_push($arrayUser, $user);
-        $entity->setUsersView(implode($arrayUser));
+        /*
+        arrayCollection de los nombre de usuarios
+        output: [ 0 => ",admin,user"]
+        */
+        $arrayUser = new ArrayCollection( [$entity->getUsersView()] );
+       
+        //funcion clousure para usarlo en el metodo:exist del array collection
+        $checkPersonName = function ($name, $arrayUser) {
+            return function($key) use ($name, $arrayUser) {
+                /*arreglo que separa los elementos mediante la coma
+                  output: [0=> "admin", 1=>"user1", 2=>"user2"...]
+                */
+                $arrayUserfilter = explode(",", implode($arrayUser->getValues()) );
+
+                //se recorre cada elemento del areglo filtrado
+                foreach($arrayUserfilter as $item ){
+                    if($item == $name){
+                      return $item == $name;
+                    }     
+                }
+            };
+        };
+
+        //metodo del array collection para comprobar si existe el usuario
+        $existUser = $arrayUser->exists($checkPersonName($user, $arrayUser));
+
+        if($existUser == false || !$existUser){
+            //si no existe el usuario se lo agrega a $arrayUser (la coma es importante para el metodo explode)
+            $arrayUser->add(','.$user);
+
+            //seteamos en usersView el $arrayUser actualizado con el nuevo item
+            $entity->setUsersView( implode($arrayUser->getValues() ));  
+        }
 
         $em->flush();
 
