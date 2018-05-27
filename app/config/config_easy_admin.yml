@@ -53,7 +53,11 @@ easy_admin:
                 - { property: 'tipo', label: 'Tipo' }
                 - { property: 'categoria', label: 'Categoria' }
                 - { property: 'nivel', label: 'Nivel' }
+<<<<<<< HEAD
                 - { property: 'tiempoRespuesta', label: 'Tiempo de respuesta', type_options: { class: 'Blox\TicketBundle\Entity\Nivel' } }
+=======
+                - { property: 'tiempoRespuesta', label: 'Tiempo de respuesta' }
+>>>>>>> 83cc643a682e6e606394482658fbe005dac3ce70
                 - { property: 'estado', label: 'Estado' }
                 - { property: 'empresa', label: 'Empresa' }
                 actions:
@@ -123,7 +127,11 @@ easy_admin:
                 fields:
                     - 'nivel' 
                     - 'tickets'
+<<<<<<< HEAD
                     - tiempoRespuesta
+=======
+                    - 'tiempoRespuesta'
+>>>>>>> 83cc643a682e6e606394482658fbe005dac3ce70
 
         User:
             class: Blox\TicketBundle\Entity\User
