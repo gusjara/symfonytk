@@ -298,6 +298,30 @@ class Ticket
         return $this->nivel;
     }
 
+    //calcular el tiempo de respuesta
+    // public function diffTime(){
+    //     $creado = new \DateTime(strtotime('$this->createdAt'));
+    //     $expira = $this->nivel->getTiempoRespuesta();
+    //     $creado->add(new \DateInterval('PT5H'));
+    //     dump($creado);
+    //     die;
+    //     $ahora = new \DateTime('now');
+    //      switch ($expira) {
+    //          case '0 Dias y 2 Horas':
+    //                 // code...
+    //                 $creado->add(new \DateInterval('PT2H'));
+    //                 //$tiempo = $creado - $ahora;
+    //                 return $creado;
+    //              break;
+             
+    //          default:
+    //              // code...
+    //              break;
+    //      }
+        // 15:00 expira a las 17
+        // 17 
+    // }
+
     /**
      * Set estado
      *

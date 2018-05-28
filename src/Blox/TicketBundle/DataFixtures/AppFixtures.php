@@ -37,11 +37,12 @@ class AppFixtures extends Fixture
             $user->setEnabled('1');
             $manager->persist($user);
 
-            //creo el estado Verificando
+            //creo el estado En Espera
             $estado = new Estado();
-            $estado->setEstado('Nuevo');
+            $estado->setEstado('En Espera');
             $manager->persist($estado);
             
+            //creo el estado Verificando
             $estado = new Estado();
             $estado->setEstado('Verificando');
             $manager->persist($estado);
@@ -56,28 +57,28 @@ class AppFixtures extends Fixture
             $estado->setEstado('Rechazado');
             $manager->persist($estado);
 
-            //creo el nivel Bajo y una semana en horas
+            //creo el nivel Bajo y una semana en horas 168hs mostrados en segundos
             $nivel = new Nivel();
             $nivel->setNivel('Bajo');
-            $nivel->setTiempoRespuesta('168:00:00');
+            $nivel->setTiempoRespuesta('604800');
             $manager->persist($nivel);
 
-            //creo el nivel Medio y 3 dias en horas
+            //creo el nivel Medio y 3 dias en horas 72hs mostradas en segundos
             $nivel = new Nivel();
             $nivel->setNivel('Medio');
-            $nivel->setTiempoRespuesta('72:00:00');
+            $nivel->setTiempoRespuesta('259200');
             $manager->persist($nivel);
 
-            //creo el nivel Alto y un dia en horas
+            //creo el nivel Alto y un dia en horas 24hs mostradas en segundos
             $nivel = new Nivel();
             $nivel->setNivel('Alto');
-            $nivel->setTiempoRespuesta('24:00:00');
+            $nivel->setTiempoRespuesta('86400');
             $manager->persist($nivel);
 
-            //creo el nivel Critico y dos horas
+            //creo el nivel Critico y dos horas mostradas en segundos
             $nivel = new Nivel();
             $nivel->setNivel('Critico');
-            $nivel->setTiempoRespuesta('02:00:00');
+            $nivel->setTiempoRespuesta('7200');
             $manager->persist($nivel);
 
             //creo empresa Blox
@@ -121,8 +122,6 @@ class AppFixtures extends Fixture
      
 
         $manager->flush();
-
-        # php bin/console doctrine:fixtures:load 
     }
 }
 

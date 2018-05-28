@@ -30,7 +30,7 @@ class Nivel
 
     /**
      * @var string
-     * @ORM\Column(name="tiempo_respuesta", length=255)
+     * @ORM\Column(name="tiempo_respuesta", type="integer")
      */
     private $tiempoRespuesta;
 
@@ -101,6 +101,17 @@ class Nivel
         return $this;
     }
 
+    public function convertir_segundos($seconds) 
+    {
+    $dt1 = new \DateTime("@0");
+    $dt2 = new \DateTime("@$seconds");
+    return $dt1->diff($dt2)->format('%a Dias y %h Horas');
+
+    /* tiempo respues
+        el horario de creacion (cuando)
+        horario de creacion - el tiempo de respuesta*/
+    }
+
     /**
      * Get tiempoRespuesta
      *
@@ -108,7 +119,11 @@ class Nivel
      */
     public function getTiempoRespuesta()
     {
-        return $this->tiempoRespuesta;
+        
+        // echo convert_seconds(604800)."\n";
+        return $this->convertir_segundos($this->tiempoRespuesta);
+
+        // return $this->tiempoRespuesta;
     }
 
  
