@@ -216,7 +216,7 @@ class TicketController extends BaseAdminController
     }
 
     /**
-     * @Route("ticket_verified", name="ticket_verified")
+     * @Route("/admin/ticket_verified", name="ticket_verified")
      */
     public function ticket_verified(Request $request){
         // change the properties of the given entity and save the changes

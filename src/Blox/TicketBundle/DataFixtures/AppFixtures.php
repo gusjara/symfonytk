@@ -121,6 +121,8 @@ class AppFixtures extends Fixture
      
 
         $manager->flush();
+
+        # php bin/console doctrine:fixtures:load 
     }
 }
 
