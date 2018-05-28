@@ -97,7 +97,7 @@ nelmio_cors:
         origin_regex: false
 
 
-# Devolver datos tipo json en la api rest: https://symfony.com/doc/master/bundles/FOSRestBundle/3-listener-support.html
+#Devolver datos tipo json en la api rest: https://symfony.com/doc/master/bundles/FOSRestBundle/3-listener-support.html
 fos_rest:  
     view:
         view_response_listener: 'force'
@@ -108,4 +108,6 @@ fos_rest:
         rules: 
             - { path: '^/api', priorities: ['json'], fallback_format: 'json', prefer_extension: true }
             - { path: ^/admin, priorities: [ html ], fallback_format: html, prefer_extension: true }
+            - { path: ^/login, priorities: [ html ], fallback_format: html, prefer_extension: true }
+            - { path: ^/logout, priorities: [ html ], fallback_format: html, prefer_extension: true }
 
