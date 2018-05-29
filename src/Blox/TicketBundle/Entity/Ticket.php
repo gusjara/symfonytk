@@ -430,9 +430,9 @@ class Ticket
 
     //calcular el tiempo de respuesta
     public function diffTime(){
-        dump($this->createdAt);
-                 die;
-        $creado = $this->createdAt;
+        // dump($this->createdAt);
+        //          die;
+        $creado = clone($this->createdAt);
         // $trespuesta = gmdate('d H:i:s', 3600);
         // $expira = 7 * (new \DateTime( 'H:i:s', strtotime('23:00:00')));
         // $creado->add(new \DateInterval('PT5H'));
