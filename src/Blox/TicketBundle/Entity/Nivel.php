@@ -126,7 +126,8 @@ class Nivel
     {
         
         // echo convert_seconds(604800)."\n";
-        echo $this->convertir_segundos($this->tiempoRespuesta);
+        $tempoRespuesta = $this->convertir_segundos($this->tiempoRespuesta);
+        return $tempoRespuesta;
 
     }
 
