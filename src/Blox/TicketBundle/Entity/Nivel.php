@@ -112,6 +112,11 @@ class Nivel
         horario de creacion - el tiempo de respuesta*/
     }
 
+    public function tiempoRespuestaDia(){
+
+        return $this->tiempoRespuesta;
+    }
+
     /**
      * Get tiempoRespuesta
      *
@@ -121,9 +126,8 @@ class Nivel
     {
         
         // echo convert_seconds(604800)."\n";
-        return $this->convertir_segundos($this->tiempoRespuesta);
+        echo $this->convertir_segundos($this->tiempoRespuesta);
 
-        // return $this->tiempoRespuesta;
     }
 
  

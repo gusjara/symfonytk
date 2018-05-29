@@ -298,30 +298,6 @@ class Ticket
         return $this->nivel;
     }
 
-    //calcular el tiempo de respuesta
-    // public function diffTime(){
-    //     $creado = new \DateTime(strtotime('$this->createdAt'));
-    //     $expira = $this->nivel->getTiempoRespuesta();
-    //     $creado->add(new \DateInterval('PT5H'));
-    //     dump($creado);
-    //     die;
-    //     $ahora = new \DateTime('now');
-    //      switch ($expira) {
-    //          case '0 Dias y 2 Horas':
-    //                 // code...
-    //                 $creado->add(new \DateInterval('PT2H'));
-    //                 //$tiempo = $creado - $ahora;
-    //                 return $creado;
-    //              break;
-             
-    //          default:
-    //              // code...
-    //              break;
-    //      }
-        // 15:00 expira a las 17
-        // 17 
-    // }
-
     /**
      * Set estado
      *
@@ -448,8 +424,67 @@ class Ticket
      */
     public function __construct()
     {
-        $this->setCreatedAt(new \DateTime());
-        $this->setUpdateAt(new \DateTime());
+        $this->setCreatedAt(new \DateTime('now'));
+        $this->setUpdateAt(new \DateTime('now'));
+    }
+
+    //calcular el tiempo de respuesta
+    public function diffTime(){
+        dump($this->createdAt);
+                 die;
+        $creado = $this->createdAt;
+        // $trespuesta = gmdate('d H:i:s', 3600);
+        // $expira = 7 * (new \DateTime( 'H:i:s', strtotime('23:00:00')));
+        // $creado->add(new \DateInterval('PT5H'));
+        // dump($trespuesta);
+        // die;
+        // $ahora = new \DateTime('now');
+         switch ($this->nivel->getNivel()) {
+            case 'Critico':
+                    // code...
+                    $creado->add(new \DateInterval('PT2H'));
+                    $ahora = new \DateTime('now');
+
+                    $fechafin = $creado->diff($ahora);
+                    // dump($fechafin);
+                    // die;
+                    return $fechafin->format('%H:%i:%s');
+                 break;
+            case 'Alto':
+                    // code...
+                    $creado->add(new \DateInterval('P01D'));
+                    $ahora = new \DateTime('now');
+
+                    $fechafin = $creado->diff($ahora);
+                    
+                    return $fechafin->format('%d dias y %H:%i:%s');
+                 break;
+            case 'Medio':
+                    // code...
+                    $creado->add(new \DateInterval('P03D'));
+                    $ahora = new \DateTime('now');
+
+                    $fechafin = $creado->diff($ahora);
+                    
+                    return $fechafin->format('%d dias y %H:%i:%s');
+                 break;
+            case 'Bajo':
+                    // code...
+                    $creado->add(new \DateInterval('P07D'));
+                    $ahora = new \DateTime('now');
+
+                    $fechafin = $creado->diff($ahora);
+                    
+                    return $fechafin->format('%d dias y %H:%i:%s');
+                 break;
+             
+             default:
+                 // code...
+                 break;
+
+         }
+        // 15:00 expira a las 17
+        // 17 
     }
 
 }
