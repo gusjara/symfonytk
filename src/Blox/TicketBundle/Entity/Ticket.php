@@ -444,11 +444,15 @@ class Ticket
                     // code...
                     $creado->add(new \DateInterval('PT2H'));
                     $ahora = new \DateTime('now');
-
-                    $fechafin = $creado->diff($ahora);
-                    // dump($fechafin);
+                    // dump($ahora);
                     // die;
-                    return $fechafin->format('%H:%i:%s');
+                    $fechafin = $creado->diff($ahora);
+                    if ($creado >= $ahora) {
+                        return $fechafin->format('%d dias y %H:%i:%s');
+                    }else{
+                        echo '<span class="label label-danger">vencido</span>';
+                    }
+                    
                  break;
             case 'Alto':
                     // code...
@@ -456,8 +460,11 @@ class Ticket
                     $ahora = new \DateTime('now');
 
                     $fechafin = $creado->diff($ahora);
-                    
-                    return $fechafin->format('%d dias y %H:%i:%s');
+                    if ($creado >= $ahora) {
+                        return $fechafin->format('%d dias y %H:%i:%s');
+                    }else{
+                        echo '<span class="label label-danger">vencido</span>';
+                    }
                  break;
             case 'Medio':
                     // code...
@@ -465,8 +472,11 @@ class Ticket
                     $ahora = new \DateTime('now');
 
                     $fechafin = $creado->diff($ahora);
-                    
-                    return $fechafin->format('%d dias y %H:%i:%s');
+                    if ($creado >= $ahora) {
+                        return $fechafin->format('%d dias y %H:%i:%s');
+                    }else{
+                        echo '<span class="label label-danger">vencido</span>';
+                    }
                  break;
             case 'Bajo':
                     // code...
@@ -474,8 +484,11 @@ class Ticket
                     $ahora = new \DateTime('now');
 
                     $fechafin = $creado->diff($ahora);
-                    
-                    return $fechafin->format('%d dias y %H:%i:%s');
+                    if ($creado >= $ahora) {
+                        return $fechafin->format('%d dias y %H:%i:%s');
+                    }else{
+                        echo '<span class="label label-danger">vencido</span>';
+                    }
                  break;
              
              default:
