@@ -53,8 +53,9 @@ easy_admin:
                 - { property: 'categoria', label: 'Categoria' }
                 - { property: 'nivel', label: 'Nivel' }
                 - { property: 'nivel.tiempoRespuesta', label: 'Tiempo de respuesta' }
-                # - { property: 'diffTime', label: 'Tiempo restante' }
+                - { property: 'diffTime', label: 'Tiempo restante' }
                 - { property: 'estado', label: 'Estado' }
+                - { property: 'createdAt', label: 'creado' }
                 - { property: 'empresa', label: 'Empresa' }
                 - { property: 'usersView', label: 'Visto por'}
                 actions:
