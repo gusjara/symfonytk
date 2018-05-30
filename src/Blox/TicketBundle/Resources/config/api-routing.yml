@@ -2,3 +2,6 @@ get_api_users:
   type: rest
   resource: "@BloxTicketBundle/Controller/ApiTicketController.php"
   name_prefix: api_tickets_
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"

@@ -25,4 +25,6 @@ class ApiTicketController extends Controller
 
         return ['Tickets' => $tickets];
     }
+
+    public function getLogin_checkAction(){}
 }

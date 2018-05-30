@@ -17,7 +17,9 @@ fos_user:
 
 #configuracion de rutas para la api rest
 fos_api:
-    resource: "@BloxTicketBundle/Resources/config/api-routing.yml"
-    type:     rest
-    prefix:   /api
+   resource: "@BloxTicketBundle/Resources/config/api-routing.yml"
+   type:     rest
+   prefix:   /api
 
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
