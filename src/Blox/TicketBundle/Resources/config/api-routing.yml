@@ -2,3 +2,8 @@ get_api_users:
   type: rest
   resource: "@BloxTicketBundle/Controller/ApiTicketController.php"
   name_prefix: api_tickets_
+
+get_api_categorias:
+  type: rest
+  resource: "@BloxTicketBundle/Controller/ApiCategoriaController.php"
+  name_prefix: api_categorias_
