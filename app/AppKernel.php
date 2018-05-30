@@ -25,10 +25,12 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             //se agrega el bundle de FixtureBundle para datos en la DB
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            //bundle para api rest, bundle de serializador y NelmioCors
+            //bundle para api rest, bundle de serializador,  NelmioCors y jwt
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
+            //new bundle oauth2
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

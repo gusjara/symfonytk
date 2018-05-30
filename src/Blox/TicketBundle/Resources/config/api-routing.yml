@@ -7,3 +7,6 @@ get_api_categorias:
   type: rest
   resource: "@BloxTicketBundle/Controller/ApiCategoriaController.php"
   name_prefix: api_categorias_
+  
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
